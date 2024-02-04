@@ -1,6 +1,7 @@
-# Stanford Ribonanza RNA Folding competition - top 9% solution
-Hello! This is mine and [Argusmocny](https://github.com/Argusmocny) - members of [Laboratory of Structural Bioinformatics](https://github.com/labstructbioinf) - solution to the [Stanford Ribonanza RNA Folding competition](https://www.kaggle.com/competitions/stanford-ribonanza-rna-folding). It was in the top 9% of the competition. We used a overlapping sliding window with a basic transformer model.
-We used the PyTorch library to create our solution. The code is divided into several parts:
+# Stanford Ribonanza RNA Folding competition - transformer model with overlapping window solution
+Hello! This is mine and [Argusmocny](https://github.com/Argusmocny) - members of [Laboratory of Structural Bioinformatics](https://github.com/labstructbioinf) - solution to the [Stanford Ribonanza RNA Folding competition](https://www.kaggle.com/competitions/stanford-ribonanza-rna-folding). It is based on transformer models with overlapping window applied and was in the top 9% of the competition submissions (bronze medal awarded). 
+
+We used the PyTorch library to create our solution. The code in repo is divided into several parts:
 * `network` - contains the models in the `models` directory, with the `transformer_ss.py` file being the main model file. The `dataloader`  directory contains the dataloader used for the  study, the `transwindpred_overlap.py` is the predictor used for final submission. There are also some other auxillary files used for training and submission.
 * `scripts` - contains many auxillary scripts used for training, submission, and data preprocessing.
 * `tests` - contains some tests for the `network` module, used mainly at the begging for net construction and pipeline testing.
@@ -19,8 +20,8 @@ There are also some other files and directories that are not included in the rep
 | Transformer with secondary <br> structure (SS) features added | 0.1601      | 0.18718      | Early November |
 | Transformer with SS,  4-fold CV <br>  and data error bias (DEB) | 0.1651      | 0.1854      | Mid November |
 | Transformer with SS, DEB  <br> sliding window and 4-fold CV | 0.16231      | 0.1626      | Late November |
-| Transformer with SS, DEB, <br> overlapping sliding window <br> and 4-fold CV <br> **WINNER** | 0.16319      | 0.16266      | Early December |
-| Transformer with SS, DEB, <br> overlapping sliding window, 4-fold  CV <br> and transfer learning <br> **FINAL** | 0.16865      | 0.16535      | Moments before deadline |
+| Transformer with SS, DEB, <br> overlapping sliding window <br> and 4-fold CV <br> **BEST ONE** | 0.16319      | 0.16266      | Early December |
+| Transformer with SS, DEB, <br> overlapping sliding window, <br>  4-fold  CV and transfer learning <br> **FINAL** | 0.16865      | 0.16535      | Moments before deadline |
 
 # Model development
 
@@ -45,7 +46,7 @@ The `SecStructModel`, found at `network/models/transformer_ss.py` is a Transform
 
 3. **Transformer**: The model uses a Transformer encoder for processing the input data. The Transformer provides the ability to handle long-range dependencies in the data.
 
-4. **Output**: The model outputs a single value for each position in the sequence, representing the reactivity value resembling DNS/2A3 experimental values of that position.
+4. **Output**: The model outputs a single value for each position in the sequence, representing the reactivity value resembling DMS/2A3 experimental values of that position.
 
 5. **Sliding window**: The model uses a sliding window approach to process the input data, which allows the model to capture local dependencies in the data.
 6. **Data error bias**: The model uses a data error bias to account for the error in the experimental data.
