@@ -1,5 +1,5 @@
 # Stanford Ribonanza RNA Folding competition - top 9% solution
-Hello! This is mine and @Argusmocny - members of Laboratory of Structural Bioinformatics - solution to the [Stanford Ribonanza RNA Folding competition](https://www.kaggle.com/competitions/stanford-ribonanza-rna-folding), Our solution was in the top 9% of the competition. We used a overlapping sliding window with a basic transformer model.
+Hello! This is mine and [Argusmocny](https://github.com/Argusmocny) - members of [Laboratory of Structural Bioinformatics](https://github.com/labstructbioinf) - solution to the [Stanford Ribonanza RNA Folding competition](https://www.kaggle.com/competitions/stanford-ribonanza-rna-folding), Our solution was in the top 9% of the competition. We used a overlapping sliding window with a basic transformer model.
 We used the PyTorch library to create our solution. The code is divided into several parts:
 * `network` - contains the models in the `models` directory, with the `transformer_ss.py` file being the main model file. The `dataloader`  directory contains the dataloader used for the  study, the `transwindpred_overlap.py` is the predictor used for final submission. There are also some other auxillary files used for training and submission.
 * `scripts` - contains many auxillary scripts used for training, submission, and data preprocessing.
