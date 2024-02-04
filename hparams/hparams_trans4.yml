@@ -1,0 +1,11 @@
+network:
+  dim: 192
+  depth: 8
+train:
+  batch_size: 256
+  lr: 1e-4
+  epochs: 80
+  random_seed: 666
+  lr_patience: 10 # use on test data
+  weight_decay: 1e-6
+  early_stopping: 10

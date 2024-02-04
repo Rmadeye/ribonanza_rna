@@ -1,0 +1,11 @@
+network:
+  input_dim: 64
+  hidden_dim: 64
+train:
+  batch_size: 64
+  lr: 1e-3
+  epochs: 50
+  random_seed: 2137
+  lr_patience: 10
+  weight_decay: 1e-6
+  early_stopping: 10
