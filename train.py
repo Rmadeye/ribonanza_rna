@@ -40,13 +40,10 @@ def prepare_data(data_dir: str,
     reactivity = torch.load(os.path.join(data_dir, 'reactivity.pt'))
     reactivity_err = torch.load(os.path.join(data_dir, 'reactivity_err.pt'))
     with open(os.path.join(data_dir, 'fold_ids.json'), 'rt') as fp:
-    # with open(os.path.join(data_dir, 'folds.json'), 'rt') as fp:
         folddata = json.load(fp)
     fold_key = str(args.fold) # removed -1 for working array script
     train_index  = folddata[fold_key]['ids']
     test_index = folddata[fold_key]['ids_test']
-    # train_index  = folddata[fold_key]['train_index']
-    # test_index = folddata[fold_key]['test_index']
     if test:
         num_samples = 1000
         train_index = train_index[:num_samples]
@@ -95,7 +92,6 @@ def train_model(args: argparse.Namespace):
         test=args.test, window_size=network_params['window_size'])
 
     nsamples = len(train_loader.dataloader.dataset.sequences)
-    # nsamples_test = len(test_loader.dataloader.dataset.sequences)
     best_test_error = 1e+6
     num_epochs_without_gain = 0
     epochs = 2 if args.test else train_params['epochs'] 
@@ -137,7 +133,6 @@ def train_model(args: argparse.Namespace):
             epoch_mse += calculate_mse(y, ypred, mask_react)
         
         scheduler.step(epoch_loss)
-        # breakpoint()
         epoch_loss /= nsamples
         epoch_mae /= true_masked
         epoch_mse = np.sqrt(epoch_mse) / true_masked

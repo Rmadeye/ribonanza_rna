@@ -59,7 +59,6 @@ def overlap_window(seq, ss, window_size, stride) -> Tuple[List, List, int]:
     return seqs_overlap, ss_overlap, seqlen
 
 
-# def overlap_sequence(seq: List[torch.tensor], window_size: int, stride: int) -> List[torch.tensor]:
 
 def count_parameters(model):
     return sum(p.numel() for p in model.parameters() if p.requires_grad)

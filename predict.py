@@ -11,8 +11,7 @@ from scripts.tools import rna_map, ss_map
 
 if __name__ == '__main__':
     chunksize = 256*10
-    testdata= '/home/nfs/kkaminski/kaggle/rna_filt/test/test_with_secondary.csv'
-    # testdata= '/home/nfs/rmadaj/ai/kaggle/kaggle_rna/mem_val.csv'
+    testdata= '/path/'
     parser = argparse.ArgumentParser()
     parser.add_argument('--output_file', type=str, required=True)
     parser.add_argument('--model_dir', type=str, required=False)
