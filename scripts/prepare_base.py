@@ -33,17 +33,16 @@ def main(args: argparse.Namespace):
     # q99 should be between 0 and 1
     qmin = 0.0
     qmax = 1.0
-    signal_to_noise = 0.8
+    signal_to_noise = args.sn
 
     PATH_DMS = 'dms'
     PATH_2A3 = '2a3'
     PATH_TEST = 'test'
 
-    suffix = f"{int(signal_to_noise*100)}"
-    path_dms = os.path.join(args.output + suffix, PATH_DMS)
-    path_2a3 = os.path.join(args.output + suffix, PATH_2A3)
-    path_test = os.path.join(args.output + suffix, PATH_TEST)
-    signal_to_noise = args.sn
+    path_dms = os.path.join(args.output, PATH_DMS)
+    path_2a3 = os.path.join(args.output, PATH_2A3)
+    path_test = os.path.join(args.output, PATH_TEST)
+    
     
     assert os.path.isfile(PATH_SEQ_TRAIN)
     assert os.path.isfile(PATH_SS_TRAIN)

@@ -55,4 +55,7 @@ The `SecStructModel`, found at `network/models/transformer_ss.py` is a Transform
 # Side note
 We planned using GNN (Graph Neural Networks) for solving the problem, but we did not have enough time to implement it. We believe that GNN could be a good solution for this problem, as it could capture the long-range dependencies in the data and provide a better prediction. Nevertheless, architecture of GNN model was partially prepared, but not implemented in this case - we are already developing it for another scientific project. You can find the GNN pre-model in the `network/models` directory.
 
+# TODO
+[ ]: example pipeline
+
 

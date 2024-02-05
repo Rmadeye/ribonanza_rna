@@ -1,7 +1,12 @@
 #!/bin/bash
 
-input=/home/nfs/kkaminski/kaggle/train_data.csv
-output=/home/nfs/kkaminski/kaggle/rna_ready
+input=../data/inputs/train_data.csv
+input_test=../data/inputs/test_sequences.csv
+output=../data/model_inputs
 
-python prepare.py $input $output
+python prepare_base.py $input $input_test $output
+
+ls -lh $output
+
+
 

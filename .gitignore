@@ -1,2 +1,9 @@
 batch_scripts
 old
+*.pt
+*pycache*
+*checkpoints*
+*.csv
+*csv.zip
+./model_inputs/*
+data/inputs/*

@@ -4,7 +4,7 @@ import json
 import gzip
 
 import torch
-import dgl
+# import dgl
 
 rna_dict = dict(A=0, C=1, G=2, U=3)
 rna_map = lambda letter : rna_dict[letter]
@@ -54,33 +54,33 @@ def seqlist_to_fasta_str(ids, seqlist) -> str:
         string += f"{seq}\n"
     return string
 
-def graphdict_to_dgl(graphdict: dict) -> dgl.graph:
-    '''
-    requires u,v,p, sequence, secondary keys
-    '''
+# def graphdict_to_dgl(graphdict: dict) -> dgl.graph:
+#     '''
+#     requires u,v,p, sequence, secondary keys
+#     '''
 
-    sequence, secondary = graphdict['sequence'], graphdict['secondary']
-    u, v, p = graphdict['u'], graphdict['v'], graphdict['p']
-    u, v, p = torch.LongTensor(u), torch.LongTensor(v), torch.LongTensor(p)
-    assert len(sequence) == len(secondary)
-    sequence, secondary = encode_seq_data(sequence, secondary)
-    seqlen = sequence.shape[0]
-    contact_matrix = torch.zeros((seqlen, seqlen))
-    ubase, vbase = torch.arange(0, seqlen-1), torch.arange(1, seqlen)
-    contact_matrix[ubase, vbase] = 1
-    contact_matrix[vbase, ubase] = 1
-    # u, v are numbered from 1
-    u -= 1
-    v -= 1
-    contact_matrix[u, v] = 1
-    contact_matrix[v, u] = 1
+#     sequence, secondary = graphdict['sequence'], graphdict['secondary']
+#     u, v, p = graphdict['u'], graphdict['v'], graphdict['p']
+#     u, v, p = torch.LongTensor(u), torch.LongTensor(v), torch.LongTensor(p)
+#     assert len(sequence) == len(secondary)
+#     sequence, secondary = encode_seq_data(sequence, secondary)
+#     seqlen = sequence.shape[0]
+#     contact_matrix = torch.zeros((seqlen, seqlen))
+#     ubase, vbase = torch.arange(0, seqlen-1), torch.arange(1, seqlen)
+#     contact_matrix[ubase, vbase] = 1
+#     contact_matrix[vbase, ubase] = 1
+#     # u, v are numbered from 1
+#     u -= 1
+#     v -= 1
+#     contact_matrix[u, v] = 1
+#     contact_matrix[v, u] = 1
 
-    ugprah, vgraph = torch.where(contact_matrix == 1)
-    connection_type = (ugprah - vgraph) == 1
-    graph = dgl.graph((ugprah, vgraph))
-    graph.ndata['sequence'] = sequence
-    graph.ndata['secondary'] = secondary
-    graph.edata['p'] = connection_type*1.0
+#     ugprah, vgraph = torch.where(contact_matrix == 1)
+#     connection_type = (ugprah - vgraph) == 1
+#     graph = dgl.graph((ugprah, vgraph))
+#     graph.ndata['sequence'] = sequence
+#     graph.ndata['secondary'] = secondary
+#     graph.edata['p'] = connection_type*1.0
 
-    return graph
+#     return graph
 
