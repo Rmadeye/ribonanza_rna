@@ -1,3 +1,5 @@
+![Python Version](https://img.shields.io/badge/Python-3.8-blue)![PyTorch Version](https://img.shields.io/badge/PyTorch-2.0.1-red)![CUDA Version](https://img.shields.io/badge/CUDA-11.7-green)
+
 # Stanford Ribonanza RNA Folding competition - transformer model with overlapping window solution
 Hello! This is mine and [Argusmocny](https://github.com/Argusmocny) - members of [Laboratory of Structural Bioinformatics](https://github.com/labstructbioinf) - solution to the [Stanford Ribonanza RNA Folding competition](https://www.kaggle.com/competitions/stanford-ribonanza-rna-folding). It is based on transformer models with overlapping window applied and was in the top 9% of the competition submissions (bronze medal awarded). 
 
